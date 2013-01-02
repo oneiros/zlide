@@ -1,0 +1,10 @@
+/*
+ * This is the default stylesheet that automatically gets
+ * included in your slide deck.
+ *
+ * Currently this loads the default deck.js and highlight.js
+ * themes. Feel free to add and/or change to your liking.
+ *
+ *= require deck-theme
+ *= require highlight-theme
+ */

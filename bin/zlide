@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "zlide"
+
+if File.exist?('config/deck.yml')
+  CONFIG = YAML.load(File.read('config/deck.yml'))
+end
+
+Zlide::CLI::Base.start
