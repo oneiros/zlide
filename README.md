@@ -4,7 +4,7 @@ zlide is a tool to build web-based presentations from markdown files.
 
 It currently uses deck.js for handling of slides in the browser.
 
-# Alternatives
+## Alternatives
 
 zlide is currently a work in progress and you are probably better served by one of the many alternatives.
 
@@ -24,7 +24,7 @@ Create a new slide deck:
 
     $ zlide new <deck_name>
 
-This will scaffold a directory <deck_name> with a few files and directories to get you started.
+This will scaffold a directory called 'deck_name' with a few files and directories to get you started.
 
 Change to the newly created directory, put one or more markdown files in the slides/ folder and you are good to go.
 
