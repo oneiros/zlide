@@ -1,4 +1,4 @@
-# Zlide
+# zlide
 
 zlide is a tool to build web-based presentations from markdown files.
 
