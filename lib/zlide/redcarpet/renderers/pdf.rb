@@ -50,13 +50,13 @@ module Zlide
           number_of_items = content.count('.') 
           @list_items.pop(number_of_items).each do |item|
             if item.is_a? String
-            case type
-            when :unordered
-              data << ["•", item]
-            when :ordered
-              data << ["#{counter}.", item]
-              counter += 1
-            end
+              case type
+              when :unordered
+                data << ["•", item]
+              when :ordered
+                data << ["#{counter}.", item]
+                counter += 1
+              end
             else
               data << [nil, item]
               @command_queue.delete(item)
@@ -173,7 +173,7 @@ module Zlide
                   data = c.map do |row|
                     row.map do |cell|
                       if cell.is_a? Array
-                        @pdf.make_table cell, :cell_style => cell_style, :column_widths => [25, @pdf.bounds.width - 55]
+                        @pdf.make_table cell, :cell_style => cell_style.merge(:inline_format => true), :column_widths => [25, @pdf.bounds.width - 55]
                       else
                         cell
                       end
