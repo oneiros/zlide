@@ -138,12 +138,13 @@ module Zlide
         end
 
         def block_code(code, language)
+          code.gsub!(/^(\s+)/m) { |m| "\xC2\xA0" * m.size }
           code_block = Proc.new do
             font = @pdf.font.name
             @pdf.bounding_box([5, @pdf.cursor], :width => @pdf.bounds.width - 10) do
               @pdf.move_down 5
               @pdf.font "Courier"
-              @pdf.indent(5) { @pdf.text code }
+              @pdf.indent(5) { @pdf.text code, :size => 9 }
               @pdf.line_width 0.1
               @pdf.join_style :round
               @pdf.stroke_bounds
