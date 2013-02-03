@@ -150,6 +150,7 @@ module Zlide
               @pdf.stroke_bounds
             end
             @pdf.font font
+            @pdf.move_down 5
           end
           @command_queue << code_block 
           ""
@@ -183,8 +184,10 @@ module Zlide
                   @pdf.table data, :cell_style => cell_style, :column_widths => [25, @pdf.bounds.width - 30] do |t|
                     t.cells.grep(Prawn::Table::Cell::Text).each {|text| text.style({:inline_format => true})}
                   end
+                  @pdf.move_down 5
                 elsif c.is_a? TableData
                   @pdf.table c, :cell_style => {:inline_format => true, :border_width => 0.5}
+                  @pdf.move_down 5
                 end
               end
             end
