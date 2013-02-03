@@ -156,6 +156,11 @@ module Zlide
           ""
         end
 
+        def doc_footer
+          next_box
+          ""
+        end
+
         def write_file
           @pdf.render_file("#{CONFIG['title']}.pdf")
         end
