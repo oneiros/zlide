@@ -157,7 +157,7 @@ module Zlide
         end
 
         def doc_footer
-          next_box
+          next_box unless @command_queue.empty?
           ""
         end
 
