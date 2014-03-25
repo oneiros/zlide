@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Zlide::VERSION
 
   gem.add_dependency 'redcarpet', '~> 3.1.1'
-  gem.add_dependency 'prawn', '~> 0.12.0'
+  gem.add_dependency 'prawn', '~> 1.0.0'
   gem.add_dependency 'thor', '~> 0.16.0'
   gem.add_dependency 'sinatra', '~> 1.4.4'
   gem.add_dependency 'haml', '~> 4.0.3'
