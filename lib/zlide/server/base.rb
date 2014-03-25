@@ -1,23 +1,29 @@
 require "sinatra/base"
 require "sprockets"
+require "haml"
+require "sass"
 
 module Zlide
   module Server
 
     class Base < Sinatra::Base
 
-      set :root, Dir.pwd
+      configure do
+        set :root, Dir.pwd
 
-      set :assets, Sprockets::Environment.new
+        set :assets, Sprockets::Environment.new
 
-      settings.assets.append_path File.join(File.dirname(__FILE__), '..', '..', '..', 'vendor', 'javascripts')
-      settings.assets.append_path File.join(File.dirname(__FILE__), '..', '..', '..', 'vendor', 'stylesheets')
-      settings.assets.append_path File.join(Dir.pwd, 'stylesheets')
+        settings.assets.append_path File.join(File.dirname(__FILE__), '..', '..', '..', 'vendor', 'javascripts')
+        settings.assets.append_path File.join(File.dirname(__FILE__), '..', '..', '..', 'vendor', 'stylesheets')
+        settings.assets.append_path File.join(Dir.pwd, 'stylesheets')
 
-      set :deck, Zlide::Deck.new
+        set :deck, Zlide::Deck.new
+
+        Haml::Options.defaults[:ugly] = true
+      end
 
       get '/' do
-        settings.deck.to_html 
+        settings.deck.to_html
       end
 
       get '/slide/:id' do |id|

@@ -2,7 +2,7 @@ require 'haml'
 require 'yaml'
 
 module Zlide
-  
+
   class Deck
 
     def initialize
@@ -36,9 +36,9 @@ module Zlide
     end
 
     def to_pdf
-      pdf = Zlide::Redcarpet::Renderers::PDF.new
-      markdown_parser(pdf).render(full_markdown)
-      pdf.write_file
+      array_renderer = Zlide::Redcarpet::Renderers::Array.new
+      markdown_parser(array_renderer).render(full_markdown)
+      Zlide::PDFWriter.new(array_renderer.slides).write_file
     end
 
     private

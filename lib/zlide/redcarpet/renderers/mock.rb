@@ -16,7 +16,7 @@ module Zlide
           end
         end
 
-        def header(text, level)
+        def header(text, level, anchor)
           puts "header#{level}: #{text}"
         end
 

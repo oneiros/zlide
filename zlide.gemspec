@@ -15,13 +15,14 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Zlide::VERSION
 
-  gem.add_dependency 'redcarpet', '~> 2.2.2'
+  gem.add_dependency 'redcarpet', '~> 3.1.1'
   gem.add_dependency 'prawn', '~> 0.12.0'
   gem.add_dependency 'thor', '~> 0.16.0'
-  gem.add_dependency 'sinatra', '~> 1.3.3'
-  gem.add_dependency 'haml', '~> 3.1.7'
+  gem.add_dependency 'sinatra', '~> 1.4.4'
+  gem.add_dependency 'haml', '~> 4.0.3'
+  gem.add_dependency 'sass', '~> 3.3.4'
   gem.add_dependency 'sprockets', '~> 2.8.1'
- 
-  gem.add_development_dependency 'rspec', '~> 2.11.0'
+
+  gem.add_development_dependency 'rspec', '~> 2.14.0'
   gem.add_development_dependency 'rack-test', '~> 0.6.2'
 end
