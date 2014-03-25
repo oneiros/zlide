@@ -35,6 +35,11 @@ module Zlide
       @pdf.move_down text_size
     end
 
+    def title_page(element)
+      text = element[:text]
+      level = element[:level]
+      @pdf.text text, size: 22, style: :bold, inline_format: true, align: :center, valign: :center
+    end
 
     def list_data(items, type)
       counter = 0
@@ -121,8 +126,12 @@ module Zlide
           @pdf.line_width 0.5
           @pdf.stroke_bounds
           @pdf.bounding_box([5,@pdf.bounds.top - 5], :width => @pdf.bounds.width - 10, :height => @pdf.bounds.height - 10) do
-            slide.each do |element|
-              send(element[:type], element)
+            if slide.size == 1 and slide.first[:type] == :headline
+              title_page(slide.first)
+            else
+              slide.each do |element|
+                send(element[:type], element)
+              end
             end
           end
         end
