@@ -1,7 +1,7 @@
 require "sinatra/base"
 require "sprockets"
 require "haml"
-require "sass"
+#require "sass"
 
 module Zlide
   module Server
