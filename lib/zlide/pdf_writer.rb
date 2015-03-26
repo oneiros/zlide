@@ -13,6 +13,10 @@ module Zlide
         :info => {:Title => CONFIG['title']}
       )
       @pdf.define_grid(:rows => 2, :columns => 2, :gutter => 1.cm)
+      default_font = @pdf.font.name
+      @header_font = default_font
+      @body_font = default_font
+      read_fonts_from_config
     end
 
     def write_file
@@ -26,7 +30,9 @@ module Zlide
       text = element[:text]
       level = element[:level]
       text_size = 17 - level
+      @pdf.font @header_font
       @pdf.text text, :size => text_size, :style => :bold, :inline_format => true
+      @pdf.font @body_font
       if level <= 2
         @pdf.line_width 0.5
         @pdf.horizontal_rule
@@ -38,7 +44,9 @@ module Zlide
     def title_page(element)
       text = element[:text]
       level = element[:level]
+      @pdf.font @header_font
       @pdf.text text, size: 22, style: :bold, inline_format: true, align: :center, valign: :center
+      @pdf.font @body_font
     end
 
     def list_data(items, type)
@@ -123,7 +131,7 @@ module Zlide
       @slides.each do |slide|
         current_box = @pdf.grid(current_row, current_column)
         current_box.bounding_box do
-          @pdf.line_width 0.5
+          @pdf.line_width 0.25
           @pdf.stroke_bounds
           @pdf.bounding_box([5,@pdf.bounds.top - 5], :width => @pdf.bounds.width - 10, :height => @pdf.bounds.height - 10) do
             if slide.size == 1 and slide.first[:type] == :headline
@@ -149,5 +157,21 @@ module Zlide
       end
     end
 
+    def read_fonts_from_config
+      ['header_font', 'body_font'].each do |font_setting|
+        if font_file = CONFIG[font_setting]
+          font_path = "fonts/#{font_file}"
+          if File.exist?(font_path)
+            family_name = File.basename(font_file, File.extname(font_file))
+            @pdf.font_families.update(
+              family_name => {normal: font_path, bold: font_path}
+            )
+            instance_variable_set(:"@#{font_setting}", family_name)
+          else
+            STDERR.puts "Could not find font file: #{font_path}"
+          end
+        end
+      end
+    end
   end
 end

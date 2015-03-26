@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Zlide::VERSION
 
-  gem.add_dependency 'redcarpet', '~> 3.1.1'
+  gem.add_dependency 'redcarpet', '~> 3.1.2'
   gem.add_dependency 'prawn', '~> 1.0.0'
   gem.add_dependency 'thor', '~> 0.16.0'
   gem.add_dependency 'sinatra', '~> 1.4.4'

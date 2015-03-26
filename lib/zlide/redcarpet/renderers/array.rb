@@ -20,7 +20,7 @@ module Zlide
           @table_cache = []
         end
 
-        def header(text, level, anchor)
+        def header(text, level)
           @current_slide << {type: :headline, text: text, level: level}
           ""
         end
