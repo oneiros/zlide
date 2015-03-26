@@ -26,7 +26,7 @@ module Zlide
 
       desc "serve", "serve your slides via http"
       def serve
-        Zlide::Server::Base.run! 
+        Zlide::Server::Base.run!
       end
 
       desc "pdf", "create a pdf version of your slides"
