@@ -97,7 +97,7 @@ module Zlide
       header_rows = element[:header_rows]
       data.concat header_rows.map{|row| row.map{|column| "<b>#{column}</b>"}}
       data.concat body_rows
-      @pdf.table c, :cell_style => {:inline_format => true, :border_width => 0.5}
+      @pdf.table data, :cell_style => {:inline_format => true, :border_width => 0.5}
       @pdf.move_down 5
     end
 
